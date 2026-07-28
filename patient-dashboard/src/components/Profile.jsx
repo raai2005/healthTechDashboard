@@ -27,12 +27,12 @@ function Profile({ patient }) {
     if (!patient) return null;
 
     return (
-        <aside className="w-[367px] shrink-0 self-start rounded-3xl bg-white px-6 py-8">
+        <aside className="w-full shrink-0 rounded-3xl bg-white px-5 py-6 sm:px-6 sm:py-8">
             <div className="flex flex-col items-center">
                 <img
                     src={patient.profile_picture}
                     alt={patient.name}
-                    className="h-[200px] w-[200px] rounded-full object-cover"
+                    className="h-[160px] w-[160px] rounded-full object-cover sm:h-[200px] sm:w-[200px]"
                 />
                 <h2 className="mt-6 text-2xl font-extrabold text-dark">{patient.name}</h2>
             </div>

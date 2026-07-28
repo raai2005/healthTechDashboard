@@ -27,7 +27,9 @@ This is a single-page application that presents a doctor's view of a patient's m
 | **Header** | Top | Tech.Care logo, navigation (Overview, Patients, Schedule, Message, Transactions), Dr. Jose Simmons profile |
 | **Patient List** | Left sidebar | Scrollable list of all patients with search icon; selected patient highlighted in teal |
 | **Diagnosis History** | Center | Blood pressure line chart, systolic/diastolic stats, vital sign cards |
+| **Diagnostic List** | Center (below vitals) | Scrollable table of problems, descriptions, and status |
 | **Patient Profile** | Right sidebar | Photo, personal info, insurance, emergency contacts |
+| **Lab Results** | Right sidebar (below profile) | Scrollable list of lab reports with download icons |
 
 ### Features Implemented
 
@@ -35,8 +37,11 @@ This is a single-page application that presents a doctor's view of a patient's m
 - Auto-selection of **Jessica Taylor** on page load
 - Interactive blood pressure chart (Systolic & Diastolic, last 6 months)
 - Vital signs cards: Respiratory Rate, Temperature, Heart Rate
+- Diagnostic list table with scrollable rows
+- Lab results list with download icon placeholders
+- Mobile-responsive layout (stacked on small screens, 3-column on desktop)
 - Loading and error states
-- Custom scrollbar styling for patient list
+- Custom scrollbar styling for lists
 - Responsive layout using Tailwind CSS
 
 ### Intentionally Not Implemented
@@ -74,8 +79,9 @@ App.jsx
 └── Renders layout:
     ├── Header.jsx          → Static navbar
     ├── Sidebar.jsx         → Patient list (all patients)
-    ├── Dashboard.jsx       → Chart and vitals
+    ├── Dashboard.jsx       → Chart, vitals, diagnostic list
     └── Profile.jsx         → Patient details
+    └── LabResults.jsx      → Lab reports list (right column)
 ```
 
 ### Data Flow
@@ -83,10 +89,12 @@ App.jsx
 1. **On load**, `App.jsx` calls `GET https://fedskillstest.coalitiontechnologies.workers.dev/` with Basic Auth.
 2. The response is an array of patient objects. The app finds **Jessica Taylor** and sets her as `selectedPatient`.
 3. **Sidebar** receives the full patient list for display; clicking a patient updates the selection.
-4. **Dashboard** reads from `patient.diagnosis_history`:
+4. **Dashboard** reads from `patient.diagnosis_history` and `patient.diagnostic_list`:
    - Latest record → vitals and BP stats
    - Last 6 months → chart data
+   - `diagnostic_list` → diagnostic table rows
 5. **Profile** reads profile fields for the patient detail panel.
+6. **LabResults** reads `patient.lab_results` for the lab reports list.
 
 ### API Data Mapping
 
@@ -99,6 +107,8 @@ App.jsx
 | `insurance_type` | Insurance provider row |
 | `diagnosis_history[0]` | Latest vitals and BP stats |
 | `diagnosis_history` (6 items) | Blood pressure chart |
+| `diagnostic_list` | Diagnostic List table |
+| `lab_results` | Lab Results list |
 
 ### Project Structure
 
@@ -110,7 +120,9 @@ patient-dashboard/
 │   ├── components/
 │   │   ├── Header.jsx       # Top navigation bar
 │   │   ├── Sidebar.jsx      # Patient list
-│   │   ├── Dashboard.jsx    # Chart and vitals
+│   │   ├── Dashboard.jsx    # Chart, vitals, diagnostic list
+│   │   ├── DiagnosticList.jsx
+│   │   ├── LabResults.jsx
 │   │   └── Profile.jsx      # Patient details
 │   ├── services/
 │   │   └── api.js           # Axios instance with Basic Auth
@@ -124,7 +136,15 @@ patient-dashboard/
 
 ---
 
-## Running the Project
+## Responsive Layout
+
+| Breakpoint | Layout |
+|------------|--------|
+| **Mobile** | Single column — Diagnosis History → Profile → Lab Results → Patient List |
+| **Tablet** | Vitals in 2 columns; nav scrolls horizontally |
+| **Desktop (xl+)** | 3-column layout — Sidebar \| Dashboard \| Profile + Lab Results |
+
+---
 
 ### Prerequisites
 
@@ -216,7 +236,9 @@ Suggested captures:
 
 1. Full dashboard view (header + 3 columns)
 2. Blood pressure chart close-up
-3. Vital signs cards
+3. Diagnostic List table
+4. Lab Results section
+5. Mobile stacked layout
 
 ---
 

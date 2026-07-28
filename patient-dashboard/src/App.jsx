@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Dashboard from "./components/Dashboard";
 import Profile from "./components/Profile";
+import LabResults from "./components/LabResults";
 
 function App() {
     const [patients, setPatients] = useState([]);
@@ -52,19 +53,26 @@ function App() {
     }
 
     return (
-        <div className="min-h-screen bg-bg pb-6">
+        <div className="min-h-screen bg-bg pb-4 sm:pb-6">
             <Header />
 
-            <div className="mx-4 mt-4 flex items-start gap-4">
-                <Sidebar
-                    patients={patients}
-                    selectedPatient={selectedPatient}
-                    onSelect={setSelectedPatient}
-                />
+            <div className="mx-2 mt-3 flex flex-col gap-3 sm:mx-4 sm:mt-4 sm:gap-4 xl:flex-row xl:items-start">
+                <div className="order-4 xl:order-1">
+                    <Sidebar
+                        patients={patients}
+                        selectedPatient={selectedPatient}
+                        onSelect={setSelectedPatient}
+                    />
+                </div>
 
-                <Dashboard patient={selectedPatient} />
+                <div className="order-1 min-w-0 flex-1 xl:order-2">
+                    <Dashboard patient={selectedPatient} />
+                </div>
 
-                <Profile patient={selectedPatient} />
+                <div className="order-2 flex w-full flex-col gap-4 xl:order-3 xl:w-[367px] xl:shrink-0">
+                    <Profile patient={selectedPatient} />
+                    <LabResults results={selectedPatient?.lab_results} />
+                </div>
             </div>
         </div>
     );

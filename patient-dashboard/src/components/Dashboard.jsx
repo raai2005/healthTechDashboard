@@ -8,6 +8,7 @@ import {
     Tooltip,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
+import DiagnosticList from "./DiagnosticList";
 
 ChartJS.register(
     CategoryScale,
@@ -100,7 +101,7 @@ function BloodPressureChart({ history }) {
     };
 
     return (
-        <div className="h-[298px] w-full">
+        <div className="h-[220px] w-full sm:h-[260px] lg:h-[298px]">
             <Line data={chartData} options={options} />
         </div>
     );
@@ -159,11 +160,13 @@ function Dashboard({ patient }) {
 
     return (
         <main className="min-w-0 flex-1">
-            <h1 className="mb-5 text-2xl font-extrabold text-dark">Diagnosis History</h1>
+            <h1 className="mb-4 text-xl font-extrabold text-dark sm:mb-5 sm:text-2xl">
+                Diagnosis History
+            </h1>
 
-            <div className="rounded-2xl bg-white p-5">
-                <div className="rounded-2xl bg-bp-bg p-5">
-                    <div className="mb-4 flex items-center justify-between">
+            <div className="rounded-2xl bg-white p-4 sm:p-5">
+                <div className="rounded-2xl bg-bp-bg p-4 sm:p-5">
+                    <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
                         <h2 className="text-lg font-bold text-dark">Blood Pressure</h2>
                         <button
                             type="button"
@@ -174,12 +177,12 @@ function Dashboard({ patient }) {
                         </button>
                     </div>
 
-                    <div className="flex gap-6">
+                    <div className="flex flex-col gap-6 lg:flex-row">
                         <div className="min-w-0 flex-1">
                             <BloodPressureChart history={patient.diagnosis_history} />
                         </div>
 
-                        <div className="flex w-[208px] shrink-0 flex-col justify-center gap-4 pt-2">
+                        <div className="flex shrink-0 flex-row gap-8 border-t border-gray-200 pt-4 lg:w-[208px] lg:flex-col lg:justify-center lg:border-t-0 lg:pt-2">
                             <div>
                                 <div className="mb-1 flex items-center gap-2">
                                     <span className="h-3.5 w-3.5 rounded-full bg-systolic" />
@@ -196,7 +199,8 @@ function Dashboard({ patient }) {
                                 </div>
                             </div>
 
-                            <div className="h-px bg-gray-300" />
+                            <div className="w-px self-stretch bg-gray-300 lg:hidden" />
+                            <div className="hidden h-px w-full bg-gray-300 lg:block" />
 
                             <div>
                                 <div className="mb-1 flex items-center gap-2">
@@ -217,7 +221,7 @@ function Dashboard({ patient }) {
                     </div>
                 </div>
 
-                <div className="mt-6 grid grid-cols-3 gap-4">
+                <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     <VitalCard
                         title="Respiratory Rate"
                         value={latest.respiratory_rate.value}
@@ -244,6 +248,8 @@ function Dashboard({ patient }) {
                     />
                 </div>
             </div>
+
+            <DiagnosticList diagnostics={patient.diagnostic_list} />
         </main>
     );
 }

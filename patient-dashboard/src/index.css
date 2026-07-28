@@ -13,6 +13,9 @@
   --color-temperature-bg: #ffe6e9;
   --color-heart-bg: #ffe6f1;
   --font-sans: "Manrope", system-ui, sans-serif;
+  --height-diagnostic-list: 172px;
+  --height-lab-results: 200px;
+  --height-patient-list: 812px;
 }
 
 @layer base {
@@ -44,5 +47,22 @@
   .scrollbar-thin::-webkit-scrollbar-thumb {
     background: #072635;
     border-radius: 9999px;
+  }
+
+  .scroll-diagnostic-3 {
+    height: var(--height-diagnostic-list);
+  }
+
+  .scroll-lab-4 {
+    height: var(--height-lab-results);
+  }
+
+  .scroll-patients {
+    max-height: 420px;
+
+    @media (width >= 80rem) {
+      height: var(--height-patient-list);
+      max-height: var(--height-patient-list);
+    }
   }
 }
