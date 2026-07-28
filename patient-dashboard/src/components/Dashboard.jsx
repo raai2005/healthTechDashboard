@@ -8,7 +8,6 @@ import {
     Tooltip,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import DiagnosticList from "./DiagnosticList";
 
 ChartJS.register(
     CategoryScale,
@@ -245,8 +244,6 @@ function Dashboard({ patient }) {
                     />
                 </div>
             </div>
-
-            <DiagnosticList diagnostics={patient.diagnostic_list} />
         </main>
     );
 }

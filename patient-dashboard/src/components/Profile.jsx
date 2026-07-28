@@ -1,5 +1,3 @@
-import LabResults from "./LabResults";
-
 function formatDate(dateString) {
     const [month, day, year] = dateString.split("/").map(Number);
     const date = new Date(year, month - 1, day);
@@ -29,7 +27,7 @@ function Profile({ patient }) {
     if (!patient) return null;
 
     return (
-        <aside className="flex h-[calc(100vh-120px)] w-[367px] shrink-0 flex-col overflow-hidden rounded-3xl bg-white px-6 py-8">
+        <aside className="w-[367px] shrink-0 self-start rounded-3xl bg-white px-6 py-8">
             <div className="flex flex-col items-center">
                 <img
                     src={patient.profile_picture}
@@ -73,10 +71,6 @@ function Profile({ patient }) {
             >
                 Show All Information
             </button>
-
-            <div className="scrollbar-thin flex-1 overflow-y-auto">
-                <LabResults results={patient.lab_results} />
-            </div>
         </aside>
     );
 }
