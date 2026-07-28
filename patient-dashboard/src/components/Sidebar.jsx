@@ -19,7 +19,7 @@ function Sidebar({ patients, selectedPatient, onSelect, inDrawer = false }) {
                 <div className="flex shrink-0 items-center justify-between px-4 pt-5 pb-4 sm:px-5">
                     <h2 className="text-xl font-extrabold text-dark sm:text-2xl">Patients</h2>
                     <button type="button" className="p-1">
-                        <img src="/assets/search.png" alt="Search" className="h-5 w-5" />
+                        <img src="/assets/search.png" alt="Search" className="h-[18px] w-[18px]" />
                     </button>
                 </div>
             )}

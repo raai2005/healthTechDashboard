@@ -40,7 +40,7 @@ function Header({ onOpenPatients }) {
             {/* Desktop header */}
             <div className="hidden flex-col gap-4 lg:flex lg:h-full lg:flex-row lg:items-center lg:justify-between">
                 <div className="flex items-center gap-2">
-                    <img src="/assets/logo.svg" alt="Tech.Care" className="h-8 w-auto" />
+                    <img src="/assets/logo.svg" alt="Tech.Care" className="h-[48px] w-[211px]" />
                 </div>
 
                 <nav className="flex items-center gap-1">
