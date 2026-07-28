@@ -60,7 +60,7 @@ function App() {
             <Header onOpenPatients={() => setDrawerOpen(true)} />
 
             <div className="mx-2 mt-3 flex flex-col gap-3 sm:mx-4 sm:mt-4 sm:gap-4 lg:flex-row lg:items-start">
-                <div className="hidden lg:block lg:shrink-0">
+                <div className="hidden lg:block lg:shrink-0 lg:w-[417px]">
                     <Sidebar
                         patients={patients}
                         selectedPatient={selectedPatient}
@@ -73,7 +73,7 @@ function App() {
                     <Dashboard patient={selectedPatient} />
                 </div>
 
-                <div className="flex w-full flex-col gap-3 lg:w-[367px] lg:shrink-0 lg:gap-4">
+                <div className="flex w-full flex-col gap-3 lg:w-[417px] lg:shrink-0 lg:gap-4">
                     <div className="order-2 lg:order-1">
                         <Profile patient={selectedPatient} />
                     </div>

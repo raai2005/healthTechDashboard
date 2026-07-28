@@ -101,7 +101,7 @@ function BloodPressureChart({ history }) {
     };
 
     return (
-        <div className="h-[220px] w-full sm:h-[260px] lg:h-[298px]">
+        <div className="h-full w-full">
             <Line data={chartData} options={options} />
         </div>
     );
@@ -223,12 +223,12 @@ function Dashboard({ patient }) {
                 Diagnosis History
             </h1>
 
-            <div className="rounded-2xl bg-white p-4 sm:p-5">
+            <div className="rounded-2xl bg-white p-5 lg:w-[766px]">
                 <h2 className="mb-4 text-lg font-extrabold text-dark lg:hidden">
                     Diagnosis History
                 </h2>
 
-                <div className="rounded-2xl bg-bp-bg p-4 sm:p-5">
+                <div className="rounded-2xl bg-bp-bg p-4" style={{ height: "298px", display: "flex", flexDirection: "column" }}>
                     <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
                         <h2 className="text-lg font-bold text-dark">Blood Pressure</h2>
                         <button
@@ -242,8 +242,8 @@ function Dashboard({ patient }) {
                         </button>
                     </div>
 
-                    <div className="flex flex-col gap-6 lg:flex-row lg:items-center">
-                        <div className="min-w-0 w-full flex-1">
+                    <div className="flex flex-1 gap-6 overflow-hidden">
+                        <div className="min-w-0 flex-1 h-full">
                             <BloodPressureChart history={patient.diagnosis_history} />
                         </div>
 
@@ -285,7 +285,7 @@ function Dashboard({ patient }) {
                     </div>
                 </div>
 
-                <div className="mt-6 hidden grid-cols-3 gap-4 lg:grid">
+                <div className="mt-5 hidden lg:grid" style={{ gridTemplateColumns: "repeat(3, 1fr)", gap: "20px" }}>
                     <VitalCard
                         title="Respiratory Rate"
                         value={latest.respiratory_rate.value}

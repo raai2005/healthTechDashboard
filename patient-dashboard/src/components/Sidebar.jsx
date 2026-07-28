@@ -12,7 +12,7 @@ function Sidebar({ patients, selectedPatient, onSelect, inDrawer = false }) {
     return (
         <aside
             className={`flex w-full flex-col overflow-hidden bg-white ${
-                inDrawer ? "h-full rounded-none" : "rounded-3xl lg:w-[367px] lg:shrink-0"
+                inDrawer ? "h-full rounded-none" : "rounded-3xl lg:w-[417px] lg:shrink-0"
             }`}
         >
             {!inDrawer && (

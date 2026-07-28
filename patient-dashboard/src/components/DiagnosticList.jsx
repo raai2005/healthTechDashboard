@@ -2,7 +2,7 @@ function DiagnosticList({ diagnostics }) {
     if (!diagnostics?.length) return null;
 
     return (
-        <div className="mt-6 rounded-3xl bg-white p-4 sm:p-5 xl:mt-8">
+        <div className="mt-4 rounded-3xl bg-white p-5 lg:w-[766px] lg:h-[349px] lg:flex lg:flex-col">
             <h2 className="mb-4 text-xl font-extrabold text-dark sm:mb-5 sm:text-2xl">
                 Diagnostic List
             </h2>
