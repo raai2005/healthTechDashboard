@@ -60,7 +60,7 @@
   .scroll-patients {
     max-height: 420px;
 
-    @media (width >= 80rem) {
+    @media (width >= 64rem) {
       height: var(--height-patient-list);
       max-height: var(--height-patient-list);
     }

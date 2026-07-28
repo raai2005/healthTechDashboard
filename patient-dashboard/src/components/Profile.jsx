@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 function formatDate(dateString) {
     const [month, day, year] = dateString.split("/").map(Number);
     const date = new Date(year, month - 1, day);
@@ -24,19 +26,12 @@ function InfoRow({ icon, label, value }) {
 }
 
 function Profile({ patient }) {
+    const [expanded, setExpanded] = useState(false);
+
     if (!patient) return null;
 
-    return (
-        <aside className="w-full shrink-0 rounded-3xl bg-white px-5 py-6 sm:px-6 sm:py-8">
-            <div className="flex flex-col items-center">
-                <img
-                    src={patient.profile_picture}
-                    alt={patient.name}
-                    className="h-[160px] w-[160px] rounded-full object-cover sm:h-[200px] sm:w-[200px]"
-                />
-                <h2 className="mt-6 text-2xl font-extrabold text-dark">{patient.name}</h2>
-            </div>
-
+    const details = (
+        <>
             <div className="mt-8 space-y-6">
                 <InfoRow
                     icon="/assets/BirthIcon.svg"
@@ -71,7 +66,52 @@ function Profile({ patient }) {
             >
                 Show All Information
             </button>
-        </aside>
+        </>
+    );
+
+    return (
+        <>
+            {/* Mobile: collapsed demographics */}
+            <aside className="w-full shrink-0 rounded-3xl bg-white p-4 lg:hidden">
+                <button
+                    type="button"
+                    onClick={() => setExpanded(!expanded)}
+                    className="flex w-full items-center justify-between"
+                >
+                    <span className="text-lg font-extrabold text-dark">Patient Details</span>
+                    <svg
+                        width="12"
+                        height="8"
+                        viewBox="0 0 12 8"
+                        fill="none"
+                        className={`transition-transform ${expanded ? "rotate-180" : ""}`}
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M1 1.5L6 6.5L11 1.5"
+                            stroke="#072635"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                        />
+                    </svg>
+                </button>
+
+                {expanded && <div className="mt-4">{details}</div>}
+            </aside>
+
+            {/* Desktop: full profile */}
+            <aside className="hidden w-full shrink-0 rounded-3xl bg-white px-6 py-8 lg:block lg:w-[367px]">
+                <div className="flex flex-col items-center">
+                    <img
+                        src={patient.profile_picture}
+                        alt={patient.name}
+                        className="h-[200px] w-[200px] rounded-full object-cover"
+                    />
+                    <h2 className="mt-6 text-2xl font-extrabold text-dark">{patient.name}</h2>
+                </div>
+                {details}
+            </aside>
+        </>
     );
 }
 

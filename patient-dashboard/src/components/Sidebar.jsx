@@ -8,17 +8,27 @@ function MoreIcon() {
     );
 }
 
-function Sidebar({ patients, selectedPatient, onSelect }) {
+function Sidebar({ patients, selectedPatient, onSelect, inDrawer = false }) {
     return (
-        <aside className="flex w-full flex-col overflow-hidden rounded-3xl bg-white xl:w-[367px] xl:shrink-0">
-            <div className="flex shrink-0 items-center justify-between px-4 pt-5 pb-4 sm:px-5">
-                <h2 className="text-xl font-extrabold text-dark sm:text-2xl">Patients</h2>
-                <button type="button" className="p-1">
-                    <img src="/assets/search.png" alt="Search" className="h-5 w-5" />
-                </button>
-            </div>
+        <aside
+            className={`flex w-full flex-col overflow-hidden bg-white ${
+                inDrawer ? "h-full rounded-none" : "rounded-3xl lg:w-[367px] lg:shrink-0"
+            }`}
+        >
+            {!inDrawer && (
+                <div className="flex shrink-0 items-center justify-between px-4 pt-5 pb-4 sm:px-5">
+                    <h2 className="text-xl font-extrabold text-dark sm:text-2xl">Patients</h2>
+                    <button type="button" className="p-1">
+                        <img src="/assets/search.png" alt="Search" className="h-5 w-5" />
+                    </button>
+                </div>
+            )}
 
-            <div className="scroll-patients scrollbar-thin overflow-y-auto px-2 pb-4">
+            <div
+                className={`scrollbar-thin overflow-y-auto px-2 pb-4 ${
+                    inDrawer ? "flex-1 pt-2" : "scroll-patients"
+                }`}
+            >
                 {patients.map((patient) => {
                     const isSelected = selectedPatient?.name === patient.name;
 

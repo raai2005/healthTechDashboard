@@ -6,31 +6,49 @@ const navItems = [
     { label: "Transactions", icon: "/assets/creditcard.svg" },
 ];
 
-function Header() {
+function Header({ onOpenPatients }) {
     return (
-        <header className="mx-2 mt-3 rounded-[32px] bg-white px-3 py-3 shadow-[0_4px_20px_rgba(0,0,0,0.06)] sm:mx-4 sm:mt-4 sm:rounded-[40px] sm:px-4 lg:rounded-[70px] lg:px-6">
-            <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-                <div className="flex items-center justify-between gap-3">
-                    <img src="/assets/logo.svg" alt="Tech.Care" className="h-7 w-auto sm:h-8" />
+        <header className="mx-2 mt-3 rounded-2xl bg-white px-3 py-3 shadow-[0_4px_20px_rgba(0,0,0,0.06)] sm:mx-4 sm:mt-4 xl:rounded-[70px] xl:px-6">
+            {/* Mobile app bar */}
+            <div className="flex items-center justify-between gap-3 lg:hidden">
+                <img src="/assets/logo.svg" alt="Tech.Care" className="h-7 w-auto shrink-0" />
 
-                    <div className="flex items-center gap-2 lg:hidden">
-                        <img
-                            src="/assets/avatar.png"
-                            alt="Dr. Jose Simmons"
-                            className="h-9 w-9 rounded-full object-cover"
-                        />
-                        <button type="button" className="p-1">
-                            <img src="/assets/gear.svg" alt="Settings" className="h-5 w-5" />
-                        </button>
-                    </div>
+                <h1 className="flex-1 text-center text-base font-extrabold text-dark">
+                    Patients
+                </h1>
+
+                <div className="flex items-center gap-1">
+                    <button
+                        type="button"
+                        onClick={onOpenPatients}
+                        className="rounded-full p-2 hover:bg-gray-50"
+                        aria-label="Open patients list"
+                    >
+                        <img src="/assets/group.svg" alt="" className="h-5 w-5" />
+                    </button>
+                    <button type="button" className="rounded-full p-2 hover:bg-gray-50">
+                        <img src="/assets/search.png" alt="Search" className="h-5 w-5" />
+                    </button>
+                    <img
+                        src="/assets/avatar.png"
+                        alt="Dr. Jose Simmons"
+                        className="h-9 w-9 rounded-full object-cover"
+                    />
+                </div>
+            </div>
+
+            {/* Desktop header */}
+            <div className="hidden flex-col gap-4 lg:flex lg:flex-row lg:items-center lg:justify-between">
+                <div className="flex items-center gap-2">
+                    <img src="/assets/logo.svg" alt="Tech.Care" className="h-8 w-auto" />
                 </div>
 
-                <nav className="scrollbar-thin flex items-center gap-1 overflow-x-auto pb-1 lg:overflow-visible lg:pb-0">
+                <nav className="flex items-center gap-1">
                     {navItems.map((item) => (
                         <button
                             key={item.label}
                             type="button"
-                            className={`flex shrink-0 items-center gap-2 rounded-[41px] px-3 py-2 text-xs font-bold transition-colors sm:px-4 sm:py-2.5 sm:text-sm ${
+                            className={`flex items-center gap-2 rounded-[41px] px-4 py-2.5 text-sm font-bold transition-colors ${
                                 item.active
                                     ? "bg-primary text-dark"
                                     : "text-dark hover:bg-gray-50"
@@ -41,12 +59,12 @@ function Header() {
                                 alt=""
                                 className={`h-4 w-4 ${item.active ? "brightness-0" : ""}`}
                             />
-                            <span className="whitespace-nowrap">{item.label}</span>
+                            {item.label}
                         </button>
                     ))}
                 </nav>
 
-                <div className="hidden items-center gap-4 lg:flex">
+                <div className="flex items-center gap-4">
                     <div className="flex items-center gap-3">
                         <img
                             src="/assets/avatar.png"
