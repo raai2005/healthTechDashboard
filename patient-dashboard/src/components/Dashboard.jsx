@@ -160,22 +160,22 @@ function VitalCard({ title, value, unit, status, bgColor, icon }) {
 
     return (
         <div
-            className="flex flex-1 flex-col items-center rounded-2xl px-4 py-4"
+            className="flex h-[242px] w-full flex-col items-start justify-between rounded-2xl px-4 py-5"
             style={{ backgroundColor: bgColor }}
         >
-            <div className="mb-3 flex h-[96px] w-[96px] items-center justify-center">
-                <img src={icon} alt={title} className="h-full w-full object-contain" />
-            </div>
-            <p className="text-base font-medium text-dark">{title}</p>
-            <p className="mt-1 text-[30px] font-extrabold leading-none text-dark">
-                {value}
-                {unit && <span className="text-lg font-bold">{unit}</span>}
-            </p>
-            <div className="mt-2 flex items-center gap-1.5">
-                {!isNormal && (
-                    <TrendIcon direction={isHigher ? "up" : isLower ? "down" : "down"} />
-                )}
-                <span className="text-sm text-gray-text">{status}</span>
+            <img src={icon} alt={title} className="h-[96px] w-[96px] object-contain" />
+            <div>
+                <p className="text-sm font-medium text-dark">{title}</p>
+                <p className="mt-1 text-[30px] font-extrabold leading-none text-dark">
+                    {value}
+                    {unit && <span className="text-lg font-bold">{unit}</span>}
+                </p>
+                <div className="mt-2 flex items-center gap-1.5">
+                    {!isNormal && (
+                        <TrendIcon direction={isHigher ? "up" : isLower ? "down" : "down"} />
+                    )}
+                    <span className="text-sm text-gray-text">{status}</span>
+                </div>
             </div>
         </div>
     );
@@ -233,48 +233,50 @@ function Dashboard({ patient }) {
                         <h2 className="text-lg font-bold text-dark">Blood Pressure</h2>
                         <button
                             type="button"
-                            className="flex items-center gap-2 rounded-md bg-white px-3 py-1.5 text-sm font-normal text-dark"
+                            className="flex items-center gap-1.5 text-sm font-normal text-dark"
                         >
                             Last 6 months
-                            <img src="/assets/download.png" alt="" className="h-2.5 w-2.5" />
+                            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                                <path d="M5 6L0 0H10L5 6Z" fill="#072635" />
+                            </svg>
                         </button>
                     </div>
 
-                    <div className="flex flex-col gap-6 lg:flex-row">
+                    <div className="flex flex-col gap-6 lg:flex-row lg:items-center">
                         <div className="min-w-0 w-full flex-1">
                             <BloodPressureChart history={patient.diagnosis_history} />
                         </div>
 
-                        <div className="hidden shrink-0 flex-col justify-center gap-4 lg:flex lg:w-[208px]">
+                        <div className="hidden shrink-0 flex-col justify-center gap-6 lg:flex lg:w-[170px]">
                             <div>
                                 <div className="mb-1 flex items-center gap-2">
-                                    <span className="h-3.5 w-3.5 rounded-full bg-systolic" />
-                                    <span className="text-base font-bold text-dark">Systolic</span>
+                                    <span className="h-3 w-3 rounded-full bg-systolic" />
+                                    <span className="text-sm font-bold text-dark">Systolic</span>
                                 </div>
                                 <p className="text-[22px] font-extrabold text-dark">
                                     {systolic.value}
                                 </p>
                                 <div className="mt-1 flex items-center gap-1.5">
                                     <TrendIcon direction="up" />
-                                    <span className="text-sm text-gray-text">
+                                    <span className="text-xs text-gray-text">
                                         {systolic.levels}
                                     </span>
                                 </div>
                             </div>
 
-                            <div className="h-px w-full bg-gray-300" />
+                            <div className="h-px w-full bg-[#CBC8D4]" />
 
                             <div>
                                 <div className="mb-1 flex items-center gap-2">
-                                    <span className="h-3.5 w-3.5 rounded-full bg-diastolic" />
-                                    <span className="text-base font-bold text-dark">Diastolic</span>
+                                    <span className="h-3 w-3 rounded-full bg-diastolic" />
+                                    <span className="text-sm font-bold text-dark">Diastolic</span>
                                 </div>
                                 <p className="text-[22px] font-extrabold text-dark">
                                     {diastolic.value}
                                 </p>
                                 <div className="mt-1 flex items-center gap-1.5">
                                     <TrendIcon direction="down" />
-                                    <span className="text-sm text-gray-text">
+                                    <span className="text-xs text-gray-text">
                                         {diastolic.levels}
                                     </span>
                                 </div>

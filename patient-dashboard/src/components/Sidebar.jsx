@@ -37,14 +37,14 @@ function Sidebar({ patients, selectedPatient, onSelect, inDrawer = false }) {
                             key={patient.name}
                             type="button"
                             onClick={() => onSelect(patient)}
-                            className={`mb-0.5 flex h-[72px] w-full items-center gap-3 rounded-lg px-3 text-left transition-colors ${
+                            className={`mb-8 flex h-[48px] w-full items-center gap-3 rounded-lg pl-5 pr-4 text-left transition-colors ${
                                 isSelected ? "bg-primary-light" : "hover:bg-gray-50"
                             }`}
                         >
                             <img
                                 src={patient.profile_picture}
                                 alt={patient.name}
-                                className="h-12 w-12 shrink-0 rounded-full object-cover"
+                                className="h-9 w-9 shrink-0 rounded-full object-cover"
                             />
 
                             <div className="min-w-0 flex-1">
