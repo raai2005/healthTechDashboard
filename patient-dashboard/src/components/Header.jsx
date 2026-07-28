@@ -8,7 +8,7 @@ const navItems = [
 
 function Header({ onOpenPatients }) {
     return (
-        <header className="mx-2 mt-3 rounded-2xl bg-white px-3 py-3 shadow-[0_4px_20px_rgba(0,0,0,0.06)] sm:mx-4 sm:mt-4 xl:rounded-[70px] xl:px-6">
+        <header className="mx-[18px] mt-[18px] rounded-2xl bg-white px-3 py-3 shadow-[0_4px_20px_rgba(0,0,0,0.06)] xl:h-[72px] xl:rounded-[70px] xl:px-6">
             {/* Mobile app bar */}
             <div className="flex items-center justify-between gap-3 lg:hidden">
                 <img src="/assets/logo.svg" alt="Tech.Care" className="h-7 w-auto shrink-0" />
@@ -38,7 +38,7 @@ function Header({ onOpenPatients }) {
             </div>
 
             {/* Desktop header */}
-            <div className="hidden flex-col gap-4 lg:flex lg:flex-row lg:items-center lg:justify-between">
+            <div className="hidden flex-col gap-4 lg:flex lg:h-full lg:flex-row lg:items-center lg:justify-between">
                 <div className="flex items-center gap-2">
                     <img src="/assets/logo.svg" alt="Tech.Care" className="h-8 w-auto" />
                 </div>
@@ -48,11 +48,10 @@ function Header({ onOpenPatients }) {
                         <button
                             key={item.label}
                             type="button"
-                            className={`flex items-center gap-2 rounded-[41px] px-4 py-2.5 text-sm font-bold transition-colors ${
-                                item.active
+                            className={`flex items-center gap-2 rounded-[41px] px-4 py-2.5 text-sm font-bold transition-colors ${item.active
                                     ? "bg-primary text-dark"
                                     : "text-dark hover:bg-gray-50"
-                            }`}
+                                }`}
                         >
                             <img
                                 src={item.icon}
