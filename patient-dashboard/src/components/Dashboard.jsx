@@ -223,7 +223,7 @@ function Dashboard({ patient }) {
                 Diagnosis History
             </h1>
 
-            <div className="rounded-2xl bg-white p-5 lg:w-[766px]">
+            <div className="rounded-2xl bg-white p-5 w-full">
                 <h2 className="mb-4 text-lg font-extrabold text-dark lg:hidden">
                     Diagnosis History
                 </h2>

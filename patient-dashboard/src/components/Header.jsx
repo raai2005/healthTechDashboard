@@ -8,7 +8,8 @@ const navItems = [
 
 function Header({ onOpenPatients }) {
     return (
-        <header className="mx-[18px] mt-[18px] rounded-2xl bg-white px-3 py-3 shadow-[0_4px_20px_rgba(0,0,0,0.06)] xl:h-[72px] xl:rounded-[70px] xl:px-6">
+        <header className="mx-auto mt-[18px] max-w-[1600px] px-[18px]">
+            <div className="rounded-2xl bg-white px-3 py-3 shadow-[0_4px_20px_rgba(0,0,0,0.06)] xl:h-[72px] xl:rounded-[70px] xl:px-6">
             {/* Mobile app bar */}
             <div className="flex items-center justify-between gap-3 lg:hidden">
                 <img src="/assets/logo.svg" alt="Tech.Care" className="h-7 w-auto shrink-0" />
@@ -86,6 +87,7 @@ function Header({ onOpenPatients }) {
                         <img src="/assets/elipses.svg" alt="Menu" className="h-5 w-5" />
                     </button>
                 </div>
+            </div>
             </div>
         </header>
     );

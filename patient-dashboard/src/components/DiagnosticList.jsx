@@ -2,7 +2,7 @@ function DiagnosticList({ diagnostics }) {
     if (!diagnostics?.length) return null;
 
     return (
-        <div className="mt-4 rounded-3xl bg-white p-5 lg:w-[766px] lg:h-[349px] lg:flex lg:flex-col">
+        <div className="mt-4 rounded-3xl bg-white p-5 w-full lg:flex lg:flex-col" style={{ height: "349px" }}>
             <h2 className="mb-4 text-xl font-extrabold text-dark sm:mb-5 sm:text-2xl">
                 Diagnostic List
             </h2>
