@@ -34,7 +34,7 @@ function LabResults({ results }) {
     };
 
     return (
-        <aside className="w-full shrink-0 rounded-3xl bg-white p-4 sm:p-5 xl:w-[367px]">
+        <aside className="w-full shrink-0 rounded-3xl bg-white p-4 sm:p-5">
             <h2 className="mb-4 text-xl font-extrabold text-dark sm:text-2xl">Lab Results</h2>
 
             {/* Mobile: accordion */}

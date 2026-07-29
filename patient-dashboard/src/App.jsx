@@ -73,7 +73,7 @@ function App() {
                     <Dashboard patient={selectedPatient} />
                 </div>
 
-                <div className="flex w-full flex-col gap-3 lg:w-[417px] lg:shrink-0 lg:gap-4">
+                <div className="flex w-full flex-col gap-3 lg:w-[367px] lg:shrink-0 lg:gap-4">
                     <div className="order-2 lg:order-1">
                         <Profile patient={selectedPatient} />
                     </div>

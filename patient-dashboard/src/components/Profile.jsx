@@ -100,7 +100,7 @@ function Profile({ patient }) {
             </aside>
 
             {/* Desktop: full profile */}
-            <aside className="hidden w-full shrink-0 rounded-3xl bg-white px-6 py-8 lg:block lg:w-[417px]">
+            <aside className="hidden w-full shrink-0 rounded-3xl bg-white px-6 py-8 lg:block">
                 <div className="flex flex-col items-center">
                     <img
                         src={patient.profile_picture}
