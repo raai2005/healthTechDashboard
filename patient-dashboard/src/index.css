@@ -15,7 +15,7 @@
   --font-sans: "Manrope", system-ui, sans-serif;
   --height-diagnostic-list: 172px;
   --height-lab-results: 200px;
-  --height-patient-list: 812px;
+  --height-patient-list: 1054px;
 }
 
 @layer base {

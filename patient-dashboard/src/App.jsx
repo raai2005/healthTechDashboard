@@ -59,8 +59,8 @@ function App() {
         <div className="min-h-screen bg-bg pb-4 sm:pb-6">
             <Header onOpenPatients={() => setDrawerOpen(true)} />
 
-            <div className="mx-auto max-w-[1600px] px-4 mt-3 flex flex-col gap-3 sm:mt-4 sm:gap-4 lg:flex-row lg:items-start">
-                <div className="hidden lg:block lg:shrink-0 lg:w-[417px]">
+            <div className="mx-auto max-w-[1600px] px-4 mt-3 flex flex-col gap-3 sm:mt-4 sm:gap-4 lg:flex-row lg:items-stretch">
+                <div className="hidden lg:flex lg:shrink-0 lg:w-[417px]">
                     <Sidebar
                         patients={patients}
                         selectedPatient={selectedPatient}

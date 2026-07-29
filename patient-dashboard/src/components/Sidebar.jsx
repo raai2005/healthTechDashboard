@@ -12,7 +12,7 @@ function Sidebar({ patients, selectedPatient, onSelect, inDrawer = false }) {
     return (
         <aside
             className={`flex w-full flex-col overflow-hidden bg-white ${
-                inDrawer ? "h-full rounded-none" : "rounded-3xl lg:w-[417px] lg:shrink-0"
+                inDrawer ? "h-full rounded-none" : "h-full rounded-3xl lg:w-[417px] lg:shrink-0"
             }`}
         >
             {!inDrawer && (
@@ -26,7 +26,7 @@ function Sidebar({ patients, selectedPatient, onSelect, inDrawer = false }) {
 
             <div
                 className={`scrollbar-thin overflow-y-auto px-2 pb-4 ${
-                    inDrawer ? "flex-1 pt-2" : "scroll-patients"
+                    inDrawer ? "flex-1 pt-2" : "scroll-patients scrollbar-thin overflow-y-auto px-2 pb-4"
                 }`}
             >
                 {patients.map((patient) => {
